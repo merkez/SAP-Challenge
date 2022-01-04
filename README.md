@@ -32,4 +32,4 @@ The test cases mentioned on the challenge description is added to [HotelTest.jav
 - Requests can be accepted after a decline (Size=3)
 - Complex Requests (Size=2)
 
-All test cases are running on CI pipeline which is provided under [./github/workflows/maven.yaml](./github/workflows/maven.yaml)
+All test cases are running on CI pipeline which is provided under [./github/workflows/maven.yml](./.github/workflows/maven.yml)
