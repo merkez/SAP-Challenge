@@ -15,7 +15,7 @@ public class Hotel {
 
     // make sure that reservation cannot exceed 365 days
     // and day value cannot be negative value
-    private boolean isReservationValid(Reservation reservation) {
+    public boolean isReservationValid(Reservation reservation) {
         if (reservation.getStartDay() < 0 ||
             reservation.getStartDay() > MAX_NUMBER_OF_DAYS &&
             reservation.getEndDay() < 0 ||
@@ -74,7 +74,7 @@ public class Hotel {
     }
 
     // check requested reservation times against existing one
-    private boolean checkAvailabilityOfReservation(Reservation requestedReservation, Reservation existsReservation ) {
+    public boolean checkAvailabilityOfReservation(Reservation requestedReservation, Reservation existsReservation ) {
         return   (requestedReservation.getStartDay() > existsReservation.getStartDay() &&
                 requestedReservation.getStartDay() > existsReservation.getEndDay() &&
                 requestedReservation.getEndDay() > existsReservation.getStartDay() &&

@@ -11,6 +11,8 @@ class HotelTest {
     Hotel hotel;
     ArrayList<Reservation> reservations;
     List<List<Integer>> bookingDays;
+    Reservation reservation;
+
     @BeforeEach
     void setUp() {
         hotel = new Hotel();
@@ -23,6 +25,32 @@ class HotelTest {
     void getSetRequestedHotelSize() throws Exception {
         hotel.setRequestedHotelSize(12);
         assert hotel.getRequestedHotelSize() == 12;
+    }
+
+
+    @Test
+    void isReservationValid() throws Exception {
+        hotel.setRequestedHotelSize(2);
+        reservation = new Reservation(0,0);
+        assertTrue(hotel.isReservationValid(reservation));
+        reservation = new Reservation(-1,0);
+        assertFalse(hotel.isReservationValid(reservation));
+        reservation = new Reservation(1,366);
+        assertFalse(hotel.isReservationValid(reservation));
+        reservation = new Reservation(23,192);
+        assertTrue(hotel.isReservationValid(reservation));
+    }
+
+
+    @Test
+    void checkAvailabilityOfReservation() throws Exception {
+        hotel.setRequestedHotelSize(2);
+        Reservation requestedReservation = new Reservation(4,10);
+        Reservation existsReservation = new Reservation(3,5);
+        assertFalse(hotel.checkAvailabilityOfReservation(requestedReservation,existsReservation));
+        requestedReservation = new Reservation(0,0);
+        existsReservation = new Reservation(1,2);
+        assertTrue(hotel.checkAvailabilityOfReservation(requestedReservation,existsReservation));
     }
 
 
